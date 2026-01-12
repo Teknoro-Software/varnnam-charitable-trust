@@ -7,7 +7,7 @@ export default function Footer() {
 
                     <div>
                         <h3 className="text-[18px] font-semibold mb-4">
-                            Varnnam Charitable Trust
+                            Varnam Charitable Trust
                         </h3>
                         <p className="text-[14px] text-gray-400 leading-[1.6]">
                             Working towards a more equitable, just, and inclusive society
@@ -40,8 +40,8 @@ export default function Footer() {
                         <ul className="space-y-3 text-[14px] text-gray-400">
                             <li>Chennai, Tamil Nadu</li>
                             <li>
-                                <a href="mailto:info@varnnamtrust.org" className="hover:text-white">
-                                    info@varnnamtrust.org
+                                <a href="mailto:info@Varnamtrust.org" className="hover:text-white">
+                                    info@Varnamtrust.org
                                 </a>
                             </li>
                         </ul>
@@ -50,7 +50,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-white/10 mt-[64px] pt-6 flex justify-between text-[12px] text-gray-500">
-                    <p>© {new Date().getFullYear()} Varnnam Charitable Trust.</p>
+                    <p>© {new Date().getFullYear()} Varnam Charitable Trust.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-white">Privacy</a>
                         <a href="#" className="hover:text-white">Terms</a>

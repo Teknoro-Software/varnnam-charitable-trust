@@ -11,7 +11,7 @@ export default function ContactPage() {
                     </h1>
                     <p className="text-[18px] text-gray-600 max-w-[640px] leading-[1.6]">
                         We welcome inquiries related to our programmes, partnerships,
-                        research, and general information about the work of Varnnam
+                        research, and general information about the work of Varnam
                         Charitable Trust.
                     </p>
                 </div>
@@ -32,7 +32,7 @@ export default function ContactPage() {
                             <div>
                                 <p className="font-medium text-[#1f1f1f]">Address</p>
                                 <p>
-                                    Varnnam Charitable Trust<br />
+                                    Varnam Charitable Trust<br />
                                     Chennai, Tamil Nadu<br />
                                     India
                                 </p>
@@ -41,10 +41,10 @@ export default function ContactPage() {
                             <div>
                                 <p className="font-medium text-[#1f1f1f]">Email</p>
                                 <a
-                                    href="mailto:info@varnnamtrust.org"
+                                    href="mailto:info@Varnamtrust.org"
                                     className="text-[#c62828] hover:underline"
                                 >
-                                    info@varnnamtrust.org
+                                    info@Varnamtrust.org
                                 </a>
                             </div>
 

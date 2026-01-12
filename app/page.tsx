@@ -8,7 +8,7 @@ const slides = [
   {
     title: "Working towards a more equitable and just society",
     description:
-      "Varnnam Charitable Trust supports long-term initiatives that strengthen communities, institutions, and systems across India.",
+      "Varnam Charitable Trust supports long-term initiatives that strengthen communities, institutions, and systems across India.",
     image:
       "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1600&auto=format&fit=crop",
   },
@@ -687,7 +687,7 @@ export default function Page() {
             viewport={{ once: false }}
           >
             <h2 className="relative inline-block text-[36px] font-light mb-8 tracking-tight">
-              About Varnnam Trust
+              About Varnam Trust
               <span className="absolute left-0 -bottom-3 h-[4px] w-14 bg-[#c62828]" />
             </h2>
 
@@ -698,7 +698,7 @@ export default function Page() {
             </p>
 
             <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-10 max-w-[520px]">
-              Varnnam Charitable Trust symbolises humanitarianism and personifies the force that advances
+              Varnam Charitable Trust symbolises humanitarianism and personifies the force that advances
               social and economic development through long-term initiatives.
             </p>
 
