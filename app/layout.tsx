@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Varnam",
+  title: "Varnam Charitable Trust",
   description: "Varnam Charitable Trust",
 };
 

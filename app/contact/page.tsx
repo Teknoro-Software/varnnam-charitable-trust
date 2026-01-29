@@ -32,9 +32,16 @@ export default function ContactPage() {
                             <div>
                                 <p className="font-medium text-[#1f1f1f]">Address</p>
                                 <p>
-                                    Varnam Charitable Trust<br />
-                                    Chennai, Tamil Nadu<br />
-                                    India
+                                    <a
+                                        href="https://www.google.com/maps/search/?api=1&query=Tc41%2F101+Sri+Vilas+Padanavu+Lane+Manacad+Trivandrum"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-[#c62828] transition"
+                                    >
+                                        Tc41/101, Sri Vilas<br />
+                                        Padanavu Lane, Manacad<br />
+                                        Trivandrum
+                                    </a>
                                 </p>
                             </div>
 
