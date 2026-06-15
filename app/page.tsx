@@ -1,8 +1,19 @@
 "use client";
 
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { HeartHandshake } from "lucide-react";
 import Link from "next/link";
+import { getLatestWorks } from "@/lib/getLatestWorks";
 import { useEffect, useState } from "react";
+
+type Work = {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  description: string;
+  images: string[];
+};
 
 const slides = [
   {
@@ -335,8 +346,57 @@ export default function Page() {
   }, []);
 
 
+  const [works, setWorks] = useState<Work[]>([]);
+
+  useEffect(() => {
+    async function loadWorks() {
+      const res = await fetch("/api/latest-works");
+      const data = await res.json();
+      console.log("WORKS:", data);
+
+      const normalized: Work[] = data.map(
+        (item: {
+          _id: string;
+          title: string;
+          slug: string;
+          category: string;
+          description: string;
+          images: string[];
+        }) => ({
+          id: item._id,
+          title: item.title,
+          slug: item.slug,
+          category: item.category,
+          description: item.description,
+          images: item.images || [],
+        })
+      );
+
+      setWorks(normalized);
+    }
+
+    loadWorks();
+  }, []);
+  const featured = works[0];
+  const secondary = works.slice(1, 3);
+
   return (
     <main className="bg-white text-[#1f1f1f]">
+      <div className="bg-[#c62828] text-white py-2 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <div className="inline-flex items-center gap-4 px-4 font-medium">
+            <HeartHandshake size={18} className="shrink-0" />
+
+            <span>
+              Donations can be made to Varnam Charitable Trust &nbsp;|&nbsp;
+              Account Name: VARNAM CHARITABLE TRUST &nbsp;|&nbsp;
+              A/C No: 556301010050553 &nbsp;|&nbsp;
+              IFSC: UBIN0555631 &nbsp;|&nbsp;
+              Bank: Union Bank of India
+            </span>
+          </div>
+        </div>
+      </div> 
 
       {/* ===== HERO CAROUSEL ===== */}
       <section id="home" className="bg-[#f7f7f7] overflow-hidden relative">
@@ -422,7 +482,7 @@ export default function Page() {
         </button>
       </section>
 
-
+      
 
       {/* ===== LATEST ===== */}
       <section id="latest" className="bg-white">
@@ -443,14 +503,15 @@ export default function Page() {
               <span className="absolute left-0 -bottom-4 h-[4px] w-12 bg-[#c62828]" />
             </h2>
 
-            <motion.a
-              href="#"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2 }}
-              className="text-[14px] font-medium text-[#c62828]"
-            >
-              View all →
-            </motion.a>
+            <Link href="/latest-works">
+              <motion.span
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
+                className="text-[14px] font-medium text-[#c62828] cursor-pointer"
+              >
+                View all →
+              </motion.span>
+            </Link>
           </motion.div>
 
           {/* Content Grid */}
@@ -459,69 +520,65 @@ export default function Page() {
             className="grid grid-cols-1 md:grid-cols-3 gap-[48px]"
           >
             {/* FEATURE STORY */}
-            <motion.article
-              variants={latestItem}
-              className="md:col-span-2"
-            >
-              <motion.div
-                className="h-[360px] mb-6 overflow-hidden"
-                initial={{ opacity: 0, scale: 0.97 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                viewport={{ once: false }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1600&auto=format&fit=crop"
-                  className="h-full w-full object-cover"
-                  alt=""
-                />
-              </motion.div>
+            {featured && (
+              <motion.article variants={latestItem} className="md:col-span-2">
+                <Link href={`/latest-works/${featured.id}`}>
+                  <div className="h-[360px] mb-6 overflow-hidden">
+                    <img
+                      src={
+                        featured.images?.[0] ||
+                        "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200"
+                      }
+                      alt={featured.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
 
-              <p className="text-[12px] text-gray-500 mb-2">
-                Programme update
-              </p>
+                  <p className="text-[12px] text-gray-500 mb-2">
+                    {featured.category}
+                  </p>
 
-              <h3 className="text-[22px] font-semibold leading-snug mb-3 max-w-[520px]">
-                Strengthening public education systems for long-term impact
-              </h3>
+                  <h3 className="text-[22px] font-semibold leading-snug mb-3 max-w-[520px]">
+                    {featured.title}
+                  </h3>
 
-              <p className="text-[15px] text-gray-600 max-w-[520px]">
-                Supporting state-level initiatives that improve governance,
-                learning outcomes, and teacher capacity.
-              </p>
-            </motion.article>
+                  <p className="text-[15px] text-gray-600 max-w-[520px]">
+                    {featured.description}
+                  </p>
+                </Link>
+              </motion.article>
+            )}
 
             {/* SECONDARY STORIES */}
             <motion.div
               variants={latestContainer}
               className="space-y-[40px]"
             >
-              {[1, 2].map((i) => (
+              {secondary.map((work) => (
                 <motion.article
-                  key={i}
+                  key={work.id}
                   variants={latestItem}
                 >
-                  <motion.div
-                    className="h-[160px] mb-4 overflow-hidden"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: false }}
-                  >
-                    <img
-                      src={`https://images.unsplash.com/photo-15${90 + i}113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop`}
-                      className="h-full w-full object-cover"
-                      alt=""
-                    />
-                  </motion.div>
+                  <Link href={`/latest-works/${work.slug}`}>
+                    <div className="h-[160px] mb-4 overflow-hidden">
+                      <img
+                        src={
+                          work.images?.[0] ||
+                          "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200"
+                        }
+                        alt={work.title}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
 
-                  <p className="text-[12px] text-gray-500 mb-1">
-                    Insight
-                  </p>
+                    <p className="text-[12px] text-gray-500 mb-1">
+                      {work.category}
+                    </p>
 
-                  <h4 className="text-[16px] font-semibold leading-snug">
-                    Advancing equitable access to healthcare services
-                  </h4>
+                    <h4 className="text-[16px] font-semibold leading-snug">
+                      {work.title}
+                    </h4>
+                  </Link>
                 </motion.article>
               ))}
             </motion.div>
