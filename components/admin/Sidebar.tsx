@@ -1,17 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
     LayoutDashboard,
     Newspaper,
-    PlusCircle,
     Settings,
     LogOut,
 } from "lucide-react";
 
 export default function AdminSidebar() {
     const pathname = usePathname();
+    const router = useRouter();
+
+    async function handleLogout() {
+        const res = await fetch(
+            "/api/admin/logout",
+            {
+                method: "POST",
+            }
+        );
+
+        if (res.ok) {
+            router.push("/admin/login");
+            router.refresh();
+        }
+    }
 
     const menuItems = [
         {
@@ -24,11 +38,6 @@ export default function AdminSidebar() {
             href: "/admin/latest-works",
             icon: Newspaper,
         },
-        // {
-        //     name: "Create Work",
-        //     href: "/admin/latest-works/new",
-        //     icon: PlusCircle,
-        // },
         {
             name: "Settings",
             href: "/admin/settings",
@@ -42,13 +51,16 @@ export default function AdminSidebar() {
             <div className="border-b border-slate-800 px-6 py-6">
                 <div className="flex items-center gap-3">
                     <img
-                        src="/logo.png" // Place your logo in public/logo.png
+                        src="/logo.png"
                         alt="Varnam Logo"
-                        className="h-12 w-12 rounded-full object-cover bg-white p-1"
+                        className="h-12 w-12 rounded-full bg-white p-1 object-cover"
                     />
 
                     <div>
-                        <h2 className="text-lg font-bold">Varnam Admin</h2>
+                        <h2 className="text-lg font-bold">
+                            Varnam Admin
+                        </h2>
+
                         <p className="text-xs text-slate-400">
                             Charitable Trust CMS
                         </p>
@@ -68,20 +80,19 @@ export default function AdminSidebar() {
 
                         const active =
                             pathname === item.href ||
-                            (item.href !== "/admin" &&
-                                pathname.startsWith(item.href));
+                            pathname.startsWith(item.href);
 
                         return (
                             <Link
                                 key={item.href}
                                 href={item.href}
                                 className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${active
-                                        ? "bg-red-600 text-white shadow-md"
+                                        ? "bg-red-600 text-white"
                                         : "text-slate-300 hover:bg-slate-800 hover:text-white"
                                     }`}
                             >
                                 <Icon size={20} />
-                                <span className="font-medium">{item.name}</span>
+                                <span>{item.name}</span>
                             </Link>
                         );
                     })}
@@ -90,7 +101,10 @@ export default function AdminSidebar() {
 
             {/* Footer */}
             <div className="border-t border-slate-800 p-4">
-                <button className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-red-400">
+                <button
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-red-400"
+                >
                     <LogOut size={20} />
                     <span>Logout</span>
                 </button>
