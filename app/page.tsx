@@ -734,82 +734,144 @@ export default function Page() {
       </section> */}
       {/* ===== ABOUT SECTION ===== */}
       <section id="about" className="bg-white">
-        <div className="max-w-[1280px] mx-auto px-6 py-[120px] grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+        <div className="max-w-7xl mx-auto px-6 py-[120px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
 
-          {/* LEFT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: false }}
-          >
-            <h2 className="relative inline-block text-[36px] font-light mb-8 tracking-tight">
-              About Varnam Trust
-              <span className="absolute left-0 -bottom-3 h-[4px] w-14 bg-[#c62828]" />
-            </h2>
+            {/* LEFT - ABOUT */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: false }}
+            >
+              <h2 className="relative inline-block text-[38px] font-light mb-8 tracking-tight">
+                About Varnam Trust
+                <span className="absolute left-0 -bottom-3 h-[4px] w-14 bg-[#c62828]" />
+              </h2>
 
-            <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-6 max-w-[520px]">
-              In a country that is home to the world’s second-largest population, when one of its largest
-              organisations happens to be a philanthropic institution, it raises hopes for a promising and
-              sustainable future.
-            </p>
+              <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-6">
+                In a country that is home to the world&apos;s second-largest population,
+                when one of its largest organisations happens to be a philanthropic
+                institution, it raises hopes for a promising and sustainable future.
+              </p>
 
-            <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-10 max-w-[520px]">
-              Varnam Charitable Trust symbolises humanitarianism and personifies the force that advances
-              social and economic development through long-term initiatives.
-            </p>
+              <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-8">
+                Varnam Charitable Trust symbolises humanitarianism and personifies
+                the force that advances social and economic development through
+                long-term initiatives.
+              </p>
 
-            <h3 className="text-[20px] font-semibold mb-4">
-              A dream that lives on
-            </h3>
+              <h3 className="text-[22px] font-semibold mb-4">
+                A Dream That Lives On
+              </h3>
 
-            <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-10 max-w-[520px]">
-              Founded on the belief that true nation-building lies in empowering people, our journey
-              continues to focus on education, livelihoods, healthcare, and social justice.
-            </p>
+              <p className="text-[16px] leading-[1.9] text-[#4b4b4b] mb-8">
+                Founded on the belief that true nation-building lies in empowering
+                people, our journey continues to focus on education, livelihoods,
+                healthcare, and social justice.
+              </p>
 
-            <button className="bg-[#c62828] text-white text-[14px] px-6 py-3 rounded hover:opacity-90 transition">
-              Know more
-            </button>
-          </motion.div>
+              {/* <button className="rounded-lg bg-[#c62828] px-6 py-3 text-white hover:bg-[#a91f1f] transition">
+                Know More
+              </button> */}
+            </motion.div>
 
-          {/* RIGHT IMAGES */}
-          <motion.div
-            className="grid grid-cols-3 gap-2"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: false }}
-          >
-            <img
-              src="/images/about/leader.jpg"
-              alt=""
-              className="h-[420px] w-full object-cover grayscale"
-            />
-            <img
-              src="/images/about/building.jpg"
-              alt=""
-              className="h-[420px] w-full object-cover grayscale"
-            />
-            <div className="relative">
-              <img
-                src="/images/about/community.jpg"
-                alt=""
-                className="h-[420px] w-full object-cover grayscale"
-              />
+            {/* RIGHT - DONATION */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="rounded-3xl border border-red-100 bg-gradient-to-br from-red-50 to-white p-8 shadow-sm"
+            >
+              <h3 className="text-3xl font-semibold text-[#c62828] mb-4">
+                Support Our Mission
+              </h3>
 
-              <div className="absolute bottom-4 right-4">
-                <button className="bg-[#c62828] text-white text-[13px] px-4 py-2">
-                  Trust History
-                </button>
+              <p className="text-gray-600 leading-8 mb-8">
+                Every contribution helps us provide healthcare, education,
+                livelihood support, disaster relief, and community development
+                programmes for those in need.
+              </p>
+
+              <div className="grid md:grid-cols-[1fr_1fr] gap-4 items-center mb-8">
+
+                {/* Left Side - Bank Details */}
+                <div className="space-y-5 text-gray-700 text-[15px]">
+
+                  <div className="grid grid-cols-[150px_1fr] gap-4">
+                    <span className="font-semibold text-gray-900">
+                      Account Name
+                    </span>
+
+                    <span className="whitespace-nowrap">
+                      Varnam Charitable Trust
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[150px_1fr] gap-4">
+                    <span className="font-semibold text-gray-900">
+                      Bank
+                    </span>
+
+                    <span>
+                      Union Bank of India
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[150px_1fr] gap-4">
+                    <span className="font-semibold text-gray-900">
+                      Account Number
+                    </span>
+
+                    <span>
+                      556301010050553
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[150px_1fr] gap-4">
+                    <span className="font-semibold text-gray-900">
+                      IFSC
+                    </span>
+
+                    <span>
+                      UBIN0555631
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[150px_1fr] gap-4">
+                    <span className="font-semibold text-gray-900">
+                      UPI ID
+                    </span>
+
+                    <span className="break-all">
+                      QR919292971754-0553@unionbankofindia
+                    </span>
+                  </div>
+
+                </div>
+
+                {/* Right Side - QR */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="rounded-2xl border bg-white p-1 shadow-md">
+                    <img
+                      src="/images/varnamQR.png"
+                      alt="Donation QR"
+                      className="h-40 w-40 object-contain"
+                    />
+                  </div>
+
+                  <p className="mt-4 text-center text-sm text-gray-500">
+                    Scan to Donate
+                  </p>
+                </div>
+
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
+          </div>
         </div>
       </section>
-
-
 
       {/* ===== PHASE 4: VOICES ===== */}
       <section id="voices" className="bg-[#d7261e] text-white relative overflow-hidden">

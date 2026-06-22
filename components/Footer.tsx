@@ -74,20 +74,20 @@ export default function Footer() {
                             <li className="flex items-center gap-3">
                                 <Mail className="h-5 w-5 text-[#c62828]" />
                                 <a
-                                    href="mailto:info@varnnamtrust.org"
+                                    href="mailto:support@varnamcharitabletrust.com"
                                     className="hover:text-[#c62828] transition"
                                 >
-                                    info@varnnamtrust.org
+                                    support@varnamcharitabletrust.com
                                 </a>
                             </li>
 
                             <li className="flex items-center gap-3">
                                 <Phone className="h-5 w-5 text-[#c62828]" />
                                 <a
-                                    href="tel:+919961122177"
+                                    href="tel:+919292971754"
                                     className="hover:text-[#c62828] transition"
                                 >
-                                    +91 99611 22177
+                                    +91 9292971754
                                 </a>
                             </li>
                         </ul>
